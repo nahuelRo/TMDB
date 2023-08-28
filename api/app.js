@@ -1,4 +1,6 @@
 import express from "express";
+import models from "./models/index.js";
+import db from "./config/db.js";
 
 const app = express();
 
@@ -8,6 +10,8 @@ app.get("/", (req, res) => {
 
 const PORT = 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+db.sync({ force: true }).then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
 });
