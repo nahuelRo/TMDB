@@ -1,6 +1,7 @@
 import User from "./User.js";
-import FavoriteMovie from "./FavoritesMovie.js";
+import Favorite from "./Favorite.js";
 
-User.hasMany(FavoriteMovie, { onDelete: "CASCADE" });
+// One to many
+User.hasMany(Favorite, { onDelete: "CASCADE" });
 
-export default { User, FavoriteMovie };
+export default { User, Favorite };

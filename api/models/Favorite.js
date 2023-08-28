@@ -1,16 +1,16 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.js";
 
-class FavoriteMovie extends Model {}
+class Favorite extends Model {}
 
-FavoriteMovie.init(
+Favorite.init(
   {
     tmdbId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
-  { sequelize, modelName: "favoriteMovie" }
+  { sequelize, modelName: "favorite" }
 );
 
-export default FavoriteMovie;
+export default Favorite;

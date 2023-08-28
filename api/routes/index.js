@@ -1,11 +1,14 @@
 import express from "express";
-import trendingRoutes from "./trending.routes.js";
-import moviesRoutes from "./movies.routes.js";
-import tvRoutes from "./tv.routes.js";
-const routes = express.Router();
 
-routes.use("/trending", trendingRoutes);
-routes.use("/movies", moviesRoutes);
-routes.use("/tv", tvRoutes);
+import moviesRouter from "./movies.routes.js";
+import usersRouter from "./users.routes.js";
 
-export default routes;
+const router = express.Router();
+
+// Movies
+router.use("/movies", moviesRouter);
+
+// Users
+router.use("/users", usersRouter);
+
+export default router;

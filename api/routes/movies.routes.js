@@ -1,14 +1,13 @@
 import express from "express";
-const routes = express.Router();
+const router = express.Router();
+
+// Get all movies
+router.get("/", (req, res) => {});
 
 // Search movie by name
-routes.get("/:name", (req, res) => {
-  res.send("search movie name");
-});
+router.get("/:name", (req, res) => {});
 
 // One movie by id
-routes.get("/:id", (req, res) => {
-  res.send("search movie id");
-});
+router.get("/:id", (req, res) => {});
 
-export default routes;
+export default router;
