@@ -1,0 +1,8 @@
+.movie {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: calc(100% - 250px);
+  height: calc(100vh - 60px);
+  display: flex;
+}

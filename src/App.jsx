@@ -4,6 +4,7 @@ import Header from "./components/Header/Header.jsx";
 import Aside from "./components/Aside/Aside.jsx";
 import Grid from "./components/Grid/Grid.jsx";
 import { Route, Routes } from "react-router-dom";
+import MovieDetails from "./components/MovieDetails/MovieDetails.jsx";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Grid movies={movies} />} />
         <Route path="/search" element={<Grid movies={searchMovies} />} />
+        <Route path="/movie/:id" element={<MovieDetails />} />
       </Routes>
     </>
   );

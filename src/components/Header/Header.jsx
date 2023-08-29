@@ -25,9 +25,15 @@ const Header = ({ setSearchMovies }) => {
   return (
     <header className="header">
       <form onSubmit={handleSubmit} className="header__search">
-        <input {...search} className="header__input" type="text" id="search" />
+        <input
+          {...search}
+          className="header__input"
+          type="text"
+          id="search"
+          placeholder="Search movie ..."
+        />
         <label className="header__container-icon" htmlFor="search">
-          <FaSearch className="header__icon" color="white" />
+          <FaSearch className="header__icon" size={20} />
         </label>
       </form>
 
