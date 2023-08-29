@@ -4,23 +4,9 @@ import "./grid.styles.css";
 const Grid = ({ movies }) => {
   return (
     <div className="grid">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {movies.map((movie) => (
+        <Card key={movie.id} movie={movie} />
+      ))}
     </div>
   );
 };
