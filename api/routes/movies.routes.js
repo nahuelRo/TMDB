@@ -10,6 +10,6 @@ router.get("/", moviesController.getAll);
 router.get("/:name", moviesController.getByName);
 
 // One movie by id
-router.get("/:id", moviesController.getById);
+router.get("/search/:id", moviesController.getById);
 
 export default router;

@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 
 import routes from "./routes/index.js";
 
@@ -11,6 +12,7 @@ const app = express();
 
 // Middlewares
 app.use(morgan("tiny"));
+app.use(cors());
 
 // Api
 app.use("/api", routes);

@@ -4,12 +4,6 @@ import usersControllers from "../controllers/usersControllers.js";
 
 const router = express.Router();
 
-// Register
-router.post("/register", usersControllers.register);
-
-// Login
-router.post("/login", usersControllers.login);
-
 // Get All
 router.get("/users/:userId/favorites", usersControllers.getFavoriteAll);
 
