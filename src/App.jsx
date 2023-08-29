@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Header from "./components/Header/Header.jsx";
+import Aside from "./components/Aside/Aside.jsx";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -18,6 +19,7 @@ function App() {
   return (
     <>
       <Header />
+      <Aside />
     </>
   );
 }

@@ -1,0 +1,45 @@
+.aside {
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  top: 0; /* Pegar el aside en la parte superior */
+  left: 0; /* Pegar el aside en el lado izquierdo */
+  gap: 3rem;
+}
+
+.aside__container-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aside__container-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.aside__link {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.aside__logo {
+  padding: 2rem;
+  color: white;
+}
+
+.aside__nav {
+  width: 100%;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 2rem;
+}
