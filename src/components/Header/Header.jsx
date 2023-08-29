@@ -3,12 +3,10 @@ import "./header.style.css";
 import useInput from "../../hooks/useInput";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
 
 const Header = ({ setSearchMovies }) => {
   const search = useInput();
   const navigate = useNavigate();
-  const input = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,13 +25,7 @@ const Header = ({ setSearchMovies }) => {
   return (
     <header className="header">
       <form onSubmit={handleSubmit} className="header__search">
-        <input
-          ref={input}
-          {...search}
-          className="header__input"
-          type="text"
-          id="search"
-        />
+        <input {...search} className="header__input" type="text" id="search" />
         <label className="header__container-icon" htmlFor="search">
           <FaSearch className="header__icon" color="white" />
         </label>
