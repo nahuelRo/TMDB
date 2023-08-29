@@ -1,7 +1,6 @@
 import "./card.style.css";
 
 const Card = ({ movie }) => {
-  console.log(movie);
   return (
     <div className="card">
       <div className="card__content">

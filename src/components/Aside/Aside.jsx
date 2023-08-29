@@ -1,5 +1,6 @@
-import { FaHome, FaYoutube, FaHeart } from "react-icons/fa";
+import { FaYoutube, FaHeart } from "react-icons/fa";
 import "./aside.style.css";
+import { NavLink } from "react-router-dom";
 
 const Aside = () => {
   return (
@@ -8,18 +9,11 @@ const Aside = () => {
         <h2 className="aside__logo">TMDB</h2>
       </div>
       <nav className="aside__nav">
-        <div className="aside__container-links">
-          <FaHome color="white" />
-          <a className="aside__link" href="#">
-            Home
-          </a>
-        </div>
-        <div className="aside__container-links">
+        <NavLink className="aside__container-links" to="/">
           <FaYoutube color="white" />
-          <a className="aside__link" href="#">
-            Movies
-          </a>
-        </div>
+          <h3 className="aside__link">Movies</h3>
+        </NavLink>
+
         <div className="aside__container-links">
           <FaHeart color="white" />
           <a className="aside__link" href="#">
