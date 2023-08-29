@@ -23,7 +23,7 @@ const Aside = () => {
         <div className="aside__container-links">
           <FaHeart color="white" />
           <a className="aside__link" href="#">
-            Home
+            Favorites
           </a>
         </div>
       </nav>

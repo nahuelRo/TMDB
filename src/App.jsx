@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Header from "./components/Header/Header.jsx";
 import Aside from "./components/Aside/Aside.jsx";
+import Grid from "./components/Grid/Grid.jsx";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -20,6 +21,7 @@ function App() {
     <>
       <Header />
       <Aside />
+      <Grid movies={movies} />
     </>
   );
 }

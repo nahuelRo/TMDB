@@ -1,0 +1,16 @@
+.grid {
+  position: absolute; /* Posición absoluta para posicionamiento personalizado */
+  bottom: 0; /* Pegar el componente de cuadrícula en la parte inferior */
+  right: 0; /* Pegar el componente de cuadrícula en la parte derecha */
+  width: calc(
+    100% - 250px
+  ); /* Ancho que ocupa todo el espacio menos el ancho del aside */
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr); /* 3 filas de igual tamaño */
+  gap: 20px; /* Espacio entre las tarjetas */
+  padding: 20px; /* Espacio interno del grid-component */
+
+  height: calc(100vh - 60px);
+}
