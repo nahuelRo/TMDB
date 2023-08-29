@@ -1,13 +1,15 @@
 import express from "express";
+import moviesController from "../controllers/moviesControllers.js";
+
 const router = express.Router();
 
 // Get all movies
-router.get("/", (req, res) => {});
+router.get("/", moviesController.getAll);
 
 // Search movie by name
-router.get("/:name", (req, res) => {});
+router.get("/:name", moviesController.getByName);
 
 // One movie by id
-router.get("/:id", (req, res) => {});
+router.get("/:id", moviesController.getById);
 
 export default router;
