@@ -1,6 +1,7 @@
 import "./register.style.css";
 import useInput from "../../hooks/useInput";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
   const name = useInput();
@@ -12,9 +13,15 @@ const Register = () => {
   const handlerSubmit = (e) => {
     e.preventDefault();
     // POST
-
-    // Navigate
-    navigate("/");
+    axios
+      .post("http://localhost:3000/api/auth/register", {
+        name: name.value,
+        lastname: lastname.value,
+        email: email.value,
+        password: password.value,
+      })
+      .then(() => console.log("User created"))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -23,19 +30,19 @@ const Register = () => {
       <form onSubmit={handlerSubmit}>
         <label htmlFor="name">
           Name
-          <input {...name} type="text" id="name" />
+          <input {...name} type="text" id="name" required />
         </label>
         <label htmlFor="lastname">
           Lastname
-          <input {...lastname} type="text" id="lastname" />
+          <input {...lastname} type="text" id="lastname" required />
         </label>
         <label htmlFor="email">
           Email
-          <input {...email} type="text" id="email" />
+          <input {...email} type="text" id="email" required />
         </label>
         <label htmlFor="password">
           Password
-          <input {...password} type="text" id="password" />
+          <input {...password} type="text" id="password" required />
         </label>
 
         <input type="submit" value="Send" />

@@ -13,6 +13,7 @@ const app = express();
 // Middlewares
 app.use(morgan("tiny"));
 app.use(cors());
+app.use(express.json());
 
 // Api
 app.use("/api", routes);

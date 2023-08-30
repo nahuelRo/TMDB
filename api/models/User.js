@@ -39,7 +39,7 @@ User.init(
 );
 
 User.beforeCreate(async (user) => {
-  const salt = bcrypt.genSalt(10);
+  const salt = await bcrypt.genSalt(8);
   user.salt = salt;
   user.password = await user.generateHash(user.password, salt);
 });
