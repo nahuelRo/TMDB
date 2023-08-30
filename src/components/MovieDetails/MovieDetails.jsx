@@ -1,4 +1,5 @@
 import axios from "axios";
+import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./movie.styles.css";
@@ -24,6 +25,13 @@ const MovieDetails = () => {
     getMovieById();
   }, [id]);
 
+  const filledStars = Math.round(movie.vote_average);
+
+  const stars = [];
+  for (let i = 0; i < filledStars; i++) {
+    stars.push(<FaStar color="yellow" />);
+  }
+
   return (
     <article className="movie">
       <img
@@ -34,13 +42,17 @@ const MovieDetails = () => {
       />
       <div className="movie__details">
         <h2>{movie.title}</h2>
+        <p>{movie.release_date}</p>
+
+        {stars}
+
         <ul>
           {movie.genres?.map((genre, index) => {
             return <li key={index}>{genre.name}</li>;
           })}
         </ul>
+
         <p>{movie.overview}</p>
-        <p>{movie.release_date}</p>
 
         <ul>
           {movie.spoken_languages?.map((language, index) => (
