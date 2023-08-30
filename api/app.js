@@ -6,13 +6,21 @@ import routes from "./routes/index.js";
 
 import models from "./models/index.js";
 import db from "./config/db.js";
+import cookieParser from "cookie-parser";
 
 // Initial app
 const app = express();
 
 // Middlewares
+
 app.use(morgan("tiny"));
-app.use(cors());
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // Api

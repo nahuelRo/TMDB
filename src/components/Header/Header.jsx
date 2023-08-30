@@ -3,10 +3,21 @@ import "./header.style.css";
 import useInput from "../../hooks/useInput";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Header = ({ setSearchMovies }) => {
   const search = useInput();
   const navigate = useNavigate();
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/auth/secret", { withCredentials: true })
+      .then((res) => res.data)
+      .then((user) => setUser(user))
+      .catch(() => console.error("Necesitas loguearte"));
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +31,18 @@ const Header = ({ setSearchMovies }) => {
     );
 
     search.onChange("");
+  };
+
+  const handleClick = () => {
+    axios
+      .post("http://localhost:3000/api/auth/logout", null, {
+        withCredentials: true,
+      })
+      .then(() => {
+        setUser({});
+        navigate("/");
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -38,12 +61,21 @@ const Header = ({ setSearchMovies }) => {
       </form>
 
       <div className="header__register">
-        <a className="header__link" href="#">
-          Login
-        </a>
-        <Link to="/register" className="header__link">
-          Register
-        </Link>
+        {user.name ? (
+          <>
+            <p style={{ color: "white" }}>{user.name}</p>
+            <button onClick={handleClick}>Log out</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="header__link">
+              Login
+            </Link>
+            <Link to="/register" className="header__link">
+              Register
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );

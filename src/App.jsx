@@ -5,6 +5,7 @@ import Aside from "./components/Aside/Aside.jsx";
 import Grid from "./components/Grid/Grid.jsx";
 import Details from "./commons/Details/Details.jsx";
 import Register from "./components/Register/Register.jsx";
+import Login from "./components/Login/Login.jsx";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/search" element={<Grid movies={searchMovies} />} />
         <Route path="/movie/:id" element={<Details />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );

@@ -1,11 +1,9 @@
-import "./register.style.css";
-import useInput from "../../hooks/useInput";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import useInput from "../../hooks/useInput";
+import "./login.style.css";
+import { useNavigate } from "react-router-dom";
 
-const Register = () => {
-  const name = useInput();
-  const lastname = useInput();
+const Login = () => {
   const email = useInput();
   const password = useInput();
   const navigate = useNavigate();
@@ -14,31 +12,27 @@ const Register = () => {
     e.preventDefault();
     // POST
     axios
-      .post("http://localhost:3000/api/auth/register", {
-        name: name.value,
-        lastname: lastname.value,
-        email: email.value,
-        password: password.value,
-      })
+      .post(
+        "http://localhost:3000/api/auth/login",
+        {
+          email: email.value,
+          password: password.value,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then(() => {
-        alert("User created");
+        alert("User logged in");
         navigate("/");
       })
       .catch((error) => console.log(error));
   };
 
   return (
-    <section className="register">
-      <h2>Register</h2>
+    <section className="login">
+      <h2>Login</h2>
       <form onSubmit={handlerSubmit}>
-        <label htmlFor="name">
-          Name
-          <input {...name} type="text" id="name" required />
-        </label>
-        <label htmlFor="lastname">
-          Lastname
-          <input {...lastname} type="text" id="lastname" required />
-        </label>
         <label htmlFor="email">
           Email
           <input {...email} type="email" id="email" required />
@@ -54,4 +48,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
