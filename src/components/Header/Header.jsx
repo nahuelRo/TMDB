@@ -2,7 +2,7 @@ import { FaSearch } from "react-icons/fa";
 import "./header.style.css";
 import useInput from "../../hooks/useInput";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = ({ setSearchMovies }) => {
   const search = useInput();
@@ -41,9 +41,9 @@ const Header = ({ setSearchMovies }) => {
         <a className="header__link" href="#">
           Login
         </a>
-        <a className="header__link" href="#">
+        <Link to="/register" className="header__link">
           Register
-        </a>
+        </Link>
       </div>
     </header>
   );
