@@ -2,7 +2,7 @@ import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./movie.styles.css";
+import "./details.styles.css";
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});

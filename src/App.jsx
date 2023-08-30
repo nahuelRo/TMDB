@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header/Header.jsx";
 import Aside from "./components/Aside/Aside.jsx";
 import Grid from "./components/Grid/Grid.jsx";
-import { Route, Routes } from "react-router-dom";
-import MovieDetails from "./components/MovieDetails/MovieDetails.jsx";
+import Details from "./commons/Details/Details.jsx";
 import Register from "./components/Register/Register.jsx";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Grid movies={movies} />} />
         <Route path="/search" element={<Grid movies={searchMovies} />} />
-        <Route path="/movie/:id" element={<MovieDetails />} />
+        <Route path="/movie/:id" element={<Details />} />
         <Route path="/register" element={<Register />} />
       </Routes>
     </>
