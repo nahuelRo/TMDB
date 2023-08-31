@@ -2,8 +2,10 @@ import axios from "axios";
 import useInput from "../../hooks/useInput";
 import "./login.style.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
+  const [isPassword, setIsPassword] = useState(true);
   const email = useInput();
   const password = useInput();
   const navigate = useNavigate();
@@ -25,7 +27,13 @@ const Login = () => {
       .then(() => {
         alert("User logged in");
         navigate("/");
-      });
+      })
+      .catch(() => alert("the user does not exist"));
+  };
+
+  const handlerClick = (e) => {
+    e.preventDefault();
+    setIsPassword(!isPassword);
   };
 
   return (
@@ -44,14 +52,18 @@ const Login = () => {
           required
         />
 
-        <input
-          className="login__input"
-          {...password}
-          type="password"
-          id="password"
-          placeholder="Password"
-          required
-        />
+        <label className="register__password">
+          <input
+            className="register__input"
+            {...password}
+            type={isPassword ? "password" : "text"}
+            placeholder="Password"
+            required
+          />
+          <span onClick={handlerClick} className="register__password-show">
+            Show
+          </span>
+        </label>
 
         <input className="login__submit" type="submit" value="Login" />
       </form>

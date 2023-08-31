@@ -2,8 +2,10 @@ import "./register.style.css";
 import useInput from "../../hooks/useInput";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useState } from "react";
 
 const Register = () => {
+  const [isPassword, setIsPassword] = useState(true);
   const name = useInput();
   const lastname = useInput();
   const email = useInput();
@@ -23,32 +25,58 @@ const Register = () => {
       .then(() => {
         alert("User created");
         navigate("/");
-      })
-      .catch((error) => console.log(error));
+      });
+  };
+
+  const handlerClick = (e) => {
+    e.preventDefault();
+    setIsPassword(!isPassword);
   };
 
   return (
     <section className="register">
-      <h2>Register</h2>
-      <form onSubmit={handlerSubmit}>
-        <label htmlFor="name">
-          Name
-          <input {...name} type="text" id="name" required />
-        </label>
-        <label htmlFor="lastname">
-          Lastname
-          <input {...lastname} type="text" id="lastname" required />
-        </label>
-        <label htmlFor="email">
-          Email
-          <input {...email} type="email" id="email" required />
-        </label>
-        <label htmlFor="password">
-          Password
-          <input {...password} type="password" id="password" required />
+      <h2 className="register__title">Sign up</h2>
+      <form className="register__form" onSubmit={handlerSubmit}>
+        <div className="register__fullname">
+          <input
+            className="register__input"
+            {...name}
+            type="text"
+            placeholder="Name"
+            required
+          />
+
+          <input
+            className="register__input"
+            {...lastname}
+            type="text"
+            placeholder="Lastname"
+            required
+          />
+        </div>
+
+        <input
+          className="register__input"
+          {...email}
+          type="email"
+          placeholder="Email"
+          required
+        />
+
+        <label className="register__password">
+          <input
+            className="register__input"
+            {...password}
+            type={isPassword ? "password" : "text"}
+            placeholder="Password"
+            required
+          />
+          <span onClick={handlerClick} className="register__password-show">
+            Show
+          </span>
         </label>
 
-        <input type="submit" value="Send" />
+        <input className="register__submit" type="submit" value="Sign up" />
       </form>
     </section>
   );
