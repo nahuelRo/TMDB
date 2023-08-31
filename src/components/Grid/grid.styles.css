@@ -2,13 +2,11 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: calc(100% - 250px);
-
+  height: calc(100vh - 100px);
+  width: calc(100% - 300px);
+  max-height: auto;
   display: grid;
-
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   padding: 20px;
-
-  height: calc(100vh - 60px);
 }

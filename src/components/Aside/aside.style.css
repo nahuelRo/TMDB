@@ -1,13 +1,13 @@
 .aside {
-  background-color: #222;
+  background-color: #131c25;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  width: 250px;
+  width: 300px;
   position: fixed;
-  top: 0; /* Pegar el aside en la parte superior */
-  left: 0; /* Pegar el aside en el lado izquierdo */
+  top: 0;
+  left: 0;
   gap: 3rem;
 }
 

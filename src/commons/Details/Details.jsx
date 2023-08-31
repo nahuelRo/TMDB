@@ -37,42 +37,34 @@ const MovieDetails = () => {
       <img
         src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
         alt=""
-        width="50%"
-        height="auto"
+        className="movie__img"
       />
+
       <div className="movie__details">
-        <h2>{movie.title}</h2>
-        <p>{movie.release_date}</p>
+        <h2 className="movie__title">{movie.title}</h2>
+        <p className="movie__date">{movie.release_date}</p>
 
-        {stars}
+        <div className="movie__stars">{stars}</div>
 
-        <ul>
+        <ul className="movie__genres">
           {movie.genres?.map((genre, index) => {
-            return <li key={index}>{genre.name}</li>;
+            return (
+              <li key={index} className="movie__genre">
+                {genre.name}
+              </li>
+            );
           })}
         </ul>
 
-        <p>{movie.overview}</p>
+        <p className="movie__overview">{movie.overview}</p>
 
-        <ul>
+        <ul className="movie__lenguages">
           {movie.spoken_languages?.map((language, index) => (
-            <li key={index}>{language.name}</li>
+            <li key={index} className="movie__lenguage">
+              {language.name}
+            </li>
           ))}
         </ul>
-
-        {movie.production_companies?.map((company, index) => {
-          return (
-            <figure key={index}>
-              <img
-                src={`https://image.tmdb.org/t/p/original${company.logo_path}`}
-                alt={company.name}
-                width="50%"
-                height="auto"
-              />
-              <figcaption>{company.name}</figcaption>
-            </figure>
-          );
-        })}
       </div>
     </article>
   );

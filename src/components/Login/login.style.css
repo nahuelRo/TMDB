@@ -2,9 +2,9 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: calc(100% - 250px);
-  height: calc(100vh - 60px);
-  background-color: #013243;
+  width: calc(100% - 300px);
+  height: calc(100vh - 100px);
+  background-color: #0c171e;
   color: white;
   display: flex;
   flex-direction: column;

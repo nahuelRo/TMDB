@@ -2,7 +2,61 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: calc(100% - 250px);
-  height: calc(100vh - 60px);
+  width: calc(100% - 300px);
+  height: calc(100vh - 100px);
   display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 2rem;
+}
+
+.movie__img {
+  width: 30%;
+  height: auto;
+}
+
+.movie__details {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 89%;
+  gap: 1rem;
+}
+
+.movie__title {
+  font-size: 2rem;
+}
+
+.movie__date {
+  font-size: 1rem;
+}
+
+.movie__stars {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.movie__genres {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.movie__genre {
+  background-color: #8f44df;
+  padding: 0.5rem 0.25rem;
+}
+
+.movie__overview {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+
+.movie__lenguages {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.movie__lenguage {
+  padding: 0.5rem 0;
 }

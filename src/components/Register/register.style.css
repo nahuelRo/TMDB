@@ -2,13 +2,13 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: calc(100% - 250px);
-  height: calc(100vh - 60px);
+  width: calc(100% - 300px);
+  height: calc(100vh - 100px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #013243;
+  background-color: #0c171e;
   color: white;
 }
 
@@ -52,6 +52,7 @@
   position: relative;
   right: 4rem;
   width: 0;
+  cursor: pointer;
 }
 
 .register__input {

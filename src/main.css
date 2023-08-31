@@ -8,16 +8,22 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style: none;
+}
+
 html,
 body {
   height: 100vh;
   width: 100%;
   font-family: "Roboto", sans-serif;
+  background-color: #0c171e;
 }
 
 #root {
   display: flex;
   height: 100%;
   width: 100%;
+  background-color: #0c171e;
   position: relative;
 }
