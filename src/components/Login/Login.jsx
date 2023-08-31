@@ -25,24 +25,35 @@ const Login = () => {
       .then(() => {
         alert("User logged in");
         navigate("/");
-      })
-      .catch((error) => console.log(error));
+      });
   };
 
   return (
     <section className="login">
-      <h2>Login</h2>
-      <form onSubmit={handlerSubmit}>
-        <label htmlFor="email">
-          Email
-          <input {...email} type="email" id="email" required />
-        </label>
-        <label htmlFor="password">
-          Password
-          <input {...password} type="password" id="password" required />
-        </label>
+      <h2 className="login__title">Sign in</h2>
+      <p className="login__description">
+        Sign in and start managing your favorites movies!
+      </p>
+      <form className="login__form" onSubmit={handlerSubmit}>
+        <input
+          className="login__input"
+          {...email}
+          type="email"
+          id="email"
+          placeholder="Email"
+          required
+        />
 
-        <input type="submit" value="Send" />
+        <input
+          className="login__input"
+          {...password}
+          type="password"
+          id="password"
+          placeholder="Password"
+          required
+        />
+
+        <input className="login__submit" type="submit" value="Login" />
       </form>
     </section>
   );
