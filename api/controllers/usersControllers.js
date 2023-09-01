@@ -57,8 +57,6 @@ const getFavoriteAll = async (req, res) => {
 const createFavorite = async (req, res) => {
   const { userId, movieId } = req.params;
 
-  console.log(userId, movieId);
-
   try {
     const user = await Models.User.findByPk(userId);
 
@@ -91,7 +89,6 @@ const deleteFavorite = async (req, res) => {
   const { userId, movieId } = req.params;
 
   try {
-    // Verifica si el usuario y la película existen
     const user = await Models.User.findByPk(userId);
     const favorite = await Models.Favorite.findOne({
       where: { tmdbId: movieId },
@@ -101,7 +98,6 @@ const deleteFavorite = async (req, res) => {
       return res.sendStatus(404);
     }
 
-    // Elimina la relación entre el usuario y la película en la tabla intermedia 'user_movie'
     await sequelize.transaction(async (t) => {
       await user.removeFavorite(favorite, { transaction: t });
     });

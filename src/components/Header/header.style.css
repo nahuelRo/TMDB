@@ -51,9 +51,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .header__link {
   color: white;
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  background-color: #1c4857;
 }

@@ -1,8 +1,9 @@
 import axios from "axios";
 import { FaStar, FaRegStar, FaTrashAlt } from "react-icons/fa";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 import "./details.styles.css";
 import { ThreeDots } from "react-loader-spinner";
@@ -11,6 +12,7 @@ const MovieDetails = ({ addFavorite, removeFavorite, favoritesMovies }) => {
   const [loader, setLoader] = useState(true);
   const [movie, setMovie] = useState({});
   const { id } = useParams();
+  const { isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
     const getMovieById = async () => {
@@ -66,18 +68,22 @@ const MovieDetails = ({ addFavorite, removeFavorite, favoritesMovies }) => {
           <div className="movie__details">
             <div className="movie__wrapper">
               <h2 className="movie__title">{movie.title}</h2>
-              {isExistFavorite ? (
-                <FaTrashAlt
-                  onClick={handleClickRemove}
-                  className="movie__favorite"
-                  size="20"
-                />
+              {isAuthenticated ? (
+                isExistFavorite ? (
+                  <FaTrashAlt
+                    onClick={handleClickRemove}
+                    className="movie__favorite"
+                    size="20"
+                  />
+                ) : (
+                  <FaRegStar
+                    size="20"
+                    className="movie__favorite"
+                    onClick={handleClickAdd}
+                  />
+                )
               ) : (
-                <FaRegStar
-                  size="20"
-                  className="movie__favorite"
-                  onClick={handleClickAdd}
-                />
+                ""
               )}
             </div>
 

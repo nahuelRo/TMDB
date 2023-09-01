@@ -8,6 +8,8 @@ import Register from "./components/Register/Register.jsx";
 import Login from "./components/Login/Login.jsx";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { AuthContext } from "./contexts/AuthContext.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -22,7 +24,11 @@ function App() {
       return prev;
     });
 
-    alert("Movie add favorites");
+    toast.success("🚀 Movie added to favorites", {
+      icon: false,
+      autoClose: 2000,
+      pauseOnHover: false,
+    });
     navigate(`/movie/${movie.id}`);
 
     axios.post(
@@ -35,11 +41,15 @@ function App() {
       return prev.filter((favorite) => favorite.id !== movieId);
     });
 
+    toast.success("🗑️ Movie removed from favorites", {
+      icon: false,
+      autoClose: 2000,
+      pauseOnHover: false,
+    });
+
     axios.delete(
       `http://localhost:3000/api/users/${user.id}/favorites/${movieId}`
     );
-    alert("Movie delete favorites");
-    navigate("/favorites");
   };
 
   useEffect(() => {
@@ -66,6 +76,8 @@ function App() {
 
   return (
     <>
+      <ToastContainer position="top-center" theme="dark" />
+
       <Header
         setSearchMovies={setSearchMovies}
         setFavoritesMovies={setFavoritesMovies}
