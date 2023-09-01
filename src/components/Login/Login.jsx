@@ -2,13 +2,16 @@ import axios from "axios";
 import useInput from "../../hooks/useInput";
 import "./login.style.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Login = () => {
   const [isPassword, setIsPassword] = useState(true);
   const email = useInput();
   const password = useInput();
   const navigate = useNavigate();
+
+  const { toggleReload } = useContext(AuthContext);
 
   const handlerSubmit = (e) => {
     e.preventDefault();
@@ -26,6 +29,7 @@ const Login = () => {
       )
       .then(() => {
         alert("User logged in");
+        toggleReload();
         navigate("/");
       })
       .catch(() => alert("the user does not exist"));

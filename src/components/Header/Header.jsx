@@ -3,21 +3,14 @@ import "./header.style.css";
 import useInput from "../../hooks/useInput";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Header = ({ setSearchMovies }) => {
   const search = useInput();
   const navigate = useNavigate();
 
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/auth/secret", { withCredentials: true })
-      .then((res) => res.data)
-      .then((user) => setUser(user))
-      .catch(() => console.error("Necesitas loguearte"));
-  }, []);
+  const { toggleAuth, user, isAuthenticated } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +32,7 @@ const Header = ({ setSearchMovies }) => {
         withCredentials: true,
       })
       .then(() => {
-        setUser({});
+        toggleAuth();
         navigate("/");
       })
       .catch((error) => console.log(error));
@@ -61,9 +54,9 @@ const Header = ({ setSearchMovies }) => {
       </form>
 
       <div className="header__register">
-        {user.name ? (
+        {isAuthenticated ? (
           <>
-            <p style={{ color: "white" }}>{user.name}</p>
+            <p style={{ color: "white" }}>Welcome {user.name}</p>
             <button onClick={handleClick}>Log out</button>
           </>
         ) : (

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaRegStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./details.styles.css";
@@ -25,12 +25,9 @@ const MovieDetails = () => {
     getMovieById();
   }, [id]);
 
-  const filledStars = Math.round(movie.vote_average);
-
-  const stars = [];
-  for (let i = 0; i < filledStars; i++) {
-    stars.push(<FaStar color="yellow" />);
-  }
+  const handleClick = () => {
+    console.log(movie.id);
+  };
 
   return (
     <article className="movie">
@@ -41,15 +38,26 @@ const MovieDetails = () => {
       />
 
       <div className="movie__details">
-        <h2 className="movie__title">{movie.title}</h2>
+        <div className="movie__wrapper">
+          <h2 className="movie__title">{movie.title}</h2>
+          <FaRegStar
+            size="20"
+            className="movie__favorite"
+            onClick={handleClick}
+          />
+        </div>
+
         <p className="movie__date">{movie.release_date}</p>
 
-        <div className="movie__stars">{stars}</div>
+        <div className="movie__stars">
+          <FaStar />
+          <span>{movie.vote_average}</span>
+        </div>
 
         <ul className="movie__genres">
           {movie.genres?.map((genre, index) => {
             return (
-              <li key={index} className="movie__genre">
+              <li key={index + 10} className="movie__genre">
                 {genre.name}
               </li>
             );
@@ -60,7 +68,7 @@ const MovieDetails = () => {
 
         <ul className="movie__lenguages">
           {movie.spoken_languages?.map((language, index) => (
-            <li key={index} className="movie__lenguage">
+            <li key={index + 20} className="movie__lenguage">
               {language.name}
             </li>
           ))}

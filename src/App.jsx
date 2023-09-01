@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "./components/Header/Header.jsx";
 import Aside from "./components/Aside/Aside.jsx";
 import Grid from "./components/Grid/Grid.jsx";
@@ -7,10 +7,12 @@ import Details from "./commons/Details/Details.jsx";
 import Register from "./components/Register/Register.jsx";
 import Login from "./components/Login/Login.jsx";
 import { Route, Routes } from "react-router-dom";
+import { AuthContext } from "./contexts/AuthContext.jsx";
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchMovies, setSearchMovies] = useState([]);
+  const { toggleAuth } = useContext(AuthContext);
 
   useEffect(() => {
     const getAllMovies = async () => {
@@ -18,6 +20,11 @@ function App() {
       const data = await movies.data.results;
       setMovies(data);
     };
+
+    axios
+      .get("http://localhost:3000/api/auth/secret", { withCredentials: true })
+      .then((res) => toggleAuth(res.data))
+      .catch(() => console.log("Require login"));
 
     getAllMovies();
   }, []);
