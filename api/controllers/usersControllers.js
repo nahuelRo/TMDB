@@ -1,5 +1,12 @@
 import Models from "../models/index.js";
 import sequelize from "../config/db.js";
+import axios from "axios";
+
+const headersConfig = {
+  Accept: "application/json",
+  Authorization:
+    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjlkMGZlNmFlZjE1ZDE2MGQ5Y2Y4YWJkN2MzNDhmOSIsInN1YiI6IjY0ZWM5N2M5YzYxM2NlMDBlYWFhMGJlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._yPF8Sc_KiDZCZ_RuJ0P6rjT3mnGD24gQI8KE_SfdEs",
+};
 
 const getFavoriteAll = async (req, res) => {
   try {
@@ -11,14 +18,34 @@ const getFavoriteAll = async (req, res) => {
     }
 
     const favoriteMovies = await Models.Favorite.findAll({
-      include: [
-        {
-          model: Models.User,
-          where: { id: userId },
-          through: { attributes: [] },
-        },
-      ],
+      where: { id: userId },
     });
+    const tmdbIds = favoriteMovies.map((favorite) => favorite.tmdbId);
+
+    const movieDetailsPromises = tmdbIds.map(async (tmdbId) => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${tmdbId}`,
+          {
+            headers: headersConfig,
+          }
+        );
+
+        return response.data;
+      } catch (error) {
+        console.error(
+          `Error al obtener detalles de la película con tmdbId ${tmdbId}:`,
+          error
+        );
+        return null;
+      }
+    });
+
+    const movieDetails = await Promise.all(movieDetailsPromises);
+
+    const validMovieDetails = movieDetails.filter((movie) => movie !== null);
+
+    res.status(200).json(validMovieDetails);
 
     res.status(200).json(favoriteMovies);
   } catch (error) {

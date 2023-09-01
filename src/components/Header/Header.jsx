@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
-const Header = ({ setSearchMovies }) => {
+const Header = ({ setSearchMovies, setFavoritesMovies }) => {
   const search = useInput();
   const navigate = useNavigate();
 
@@ -33,6 +33,7 @@ const Header = ({ setSearchMovies }) => {
       })
       .then(() => {
         toggleAuth();
+        setFavoritesMovies([]);
         navigate("/");
       })
       .catch((error) => console.log(error));
