@@ -11,15 +11,16 @@ const headersConfig = {
 const getFavoriteAll = async (req, res) => {
   try {
     const { userId } = req.params;
+
     const user = await Models.User.findByPk(userId);
 
     if (!user) {
       res.sendStatus(404);
+      return;
     }
 
-    const favoriteMovies = await Models.Favorite.findAll({
-      where: { id: userId },
-    });
+    const favoriteMovies = await user.getFavorites();
+
     const tmdbIds = favoriteMovies.map((favorite) => favorite.tmdbId);
 
     const movieDetailsPromises = tmdbIds.map(async (tmdbId) => {
@@ -55,6 +56,8 @@ const getFavoriteAll = async (req, res) => {
 
 const createFavorite = async (req, res) => {
   const { userId, movieId } = req.params;
+
+  console.log(userId, movieId);
 
   try {
     const user = await Models.User.findByPk(userId);
