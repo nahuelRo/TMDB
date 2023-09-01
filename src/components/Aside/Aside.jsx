@@ -14,12 +14,10 @@ const Aside = () => {
           <h3 className="aside__link">Movies</h3>
         </NavLink>
 
-        <div className="aside__container-links">
+        <NavLink className="aside__container-links" to="/favorites">
           <FaHeart color="white" />
-          <a className="aside__link" href="#">
-            Favorites
-          </a>
-        </div>
+          <h3 className="aside__link">Favorites</h3>
+        </NavLink>
       </nav>
     </aside>
   );

@@ -18,8 +18,8 @@ const login = async (req, res) => {
 
     if (!isValid) res.sendStatus(401);
     else {
-      const { name, lastname } = user;
-      const payload = { email, name, lastname };
+      const { id, name, lastname } = user;
+      const payload = { id, email, name, lastname };
       const token = tokens.generateToken(payload);
 
       res.cookie("token", token).send(payload);
