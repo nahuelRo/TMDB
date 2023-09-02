@@ -54,6 +54,14 @@
   gap: 1rem;
 }
 
+.header__logout {
+  color: white;
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  background-color: #1c4857;
+  border: none;
+}
+
 .header__link {
   color: white;
   border-radius: 5px;

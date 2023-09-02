@@ -58,7 +58,7 @@ const Header = ({ setSearchMovies, setFavoritesMovies }) => {
         {isAuthenticated ? (
           <>
             <p style={{ color: "white" }}>Welcome {user.name}</p>
-            <button onClick={handleClick}>Log out</button>
+            <button onClick={handleClick} className="header__logout">Log out</button>
           </>
         ) : (
           <>

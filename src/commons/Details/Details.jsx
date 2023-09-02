@@ -53,8 +53,6 @@ const MovieDetails = ({ addFavorite, removeFavorite, favoritesMovies }) => {
           radius="9"
           color="#33628c"
           ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClassName=""
           visible={true}
         />
       ) : (
