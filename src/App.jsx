@@ -31,9 +31,13 @@ function App() {
     });
     navigate(`/movie/${movie.id}`);
 
-    axios.post(
-      `http://localhost:3000/api/users/${user.id}/favorites/${movie.id}`
-    );
+    axios
+      .post(
+        `http://localhost:3000/api/users/${user.id}/favorites/${movie.id}`,
+        null,
+        { withCredentials: true }
+      )
+      .catch((error) => console.log(error));
   };
 
   const removeFavorite = (movieId) => {
@@ -48,7 +52,8 @@ function App() {
     });
 
     axios.delete(
-      `http://localhost:3000/api/users/${user.id}/favorites/${movieId}`
+      `http://localhost:3000/api/users/${user.id}/favorites/${movieId}`,
+      { withCredentials: true }
     );
   };
 
@@ -68,7 +73,9 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/users/${user?.id}/favorites`)
+      .get(`http://localhost:3000/api/users/${user?.id}/favorites`, {
+        withCredentials: true,
+      })
       .then((res) => res.data)
       .then((data) => setFavoritesMovies(data))
       .catch(() => {});

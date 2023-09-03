@@ -1,20 +1,21 @@
 import express from "express";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 import cors from "cors";
+import dotenv from "dotenv";
 
 import routes from "./routes/index.js";
 
 import models from "./models/index.js";
 import db from "./config/db.js";
-import cookieParser from "cookie-parser";
+dotenv.config();
 
 // Initial app
 const app = express();
 
 // Middlewares
-
-app.use(morgan("tiny"));
 app.use(cookieParser());
+app.use(morgan("tiny"));
 app.use(
   cors({
     origin: "http://localhost:5173",
